@@ -6,7 +6,7 @@
 
 ### T1547.001 - Registry Run Keys / Startup Folder
 
-- Execute command for current user logon via registry run key:
+- Execute $cmd when current user logins via registry run key:
     - Attack:
     ```ps1
     $cmd = "$env:SystemDrive\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoExit -Command Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
@@ -17,7 +17,7 @@
     Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name poc -Force
     ```
 
-- Execute command for current user logon via startup folder:
+- Execute $cmd when current user logins via startup folder:
     - Attack:
     ```ps1
     $cmd = "$env:SystemDrive\Windows\explorer.exe $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
