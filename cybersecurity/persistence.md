@@ -7,7 +7,7 @@
 - Execute `$cmd` every minute.
     - Attack:
         ```ps1
-        $cmd = "taskschd.msc"
+        $cmd = "PowerShell -WindowStyle Hidden -Command taskschd.msc"
         SCHTASKS /Create /F /SC MINUTE /MO 1 /TN poc /TR $cmd
         ```
     - Cleanup:
