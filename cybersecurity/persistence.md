@@ -5,7 +5,7 @@
 ## T1053.005 - Scheduled Task/Job: Scheduled Task
 
 | Privileges | Execution Trigger                    |
-|------------|--------------------------------------|
+|:-----------|:-------------------------------------|
 | Standard   | Scheduled time if user is logged in. |
 
 - Execute `$cmd` every minute.
@@ -22,7 +22,7 @@
 ## T1547.001 - Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder
 
 | Privileges | Execution Trigger |
-|------------|-------------------|
+|:-----------|:------------------|
 | Standard   | User login.       |
 
 - Execute `$cmd` (via registry run key).
