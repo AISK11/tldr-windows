@@ -41,5 +41,5 @@
 
 ## Resources
 
-- [T1053.005 - Scheduled Task/Job: Scheduled Task](https://attack.mitre.org/techniques/T1053/005/)
-- [T1547.001 - Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder](https://attack.mitre.org/techniques/T1547/001/)
+- [Mitre ATT&CK | Persistence](https://attack.mitre.org/tactics/TA0003/)
+- [Red Team Notes | Persistence](https://dmcxblue.gitbook.io/red-team-notes/persistence/)
