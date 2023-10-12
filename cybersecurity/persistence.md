@@ -6,7 +6,7 @@
 
 | Privileges | Execution Trigger                    |
 |:-----------|:-------------------------------------|
-| Standard   | Scheduled time if user is logged in. |
+| User       | Scheduled time if user is logged in. |
 
 - Execute `$cmd` every minute.
     - Attack:
@@ -23,7 +23,7 @@
 
 | Privileges | Execution Trigger |
 |:-----------|:------------------|
-| Standard   | User login.       |
+| User       | User login.       |
 
 - Execute `$cmd` (via registry run key).
     - Attack:
