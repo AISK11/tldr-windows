@@ -1,6 +1,6 @@
 # TA0004 - Privilege Escalation
 
-*- elevating permissions.*
+*- gaining permissions.*
 
 ## Resources
 
