@@ -13,6 +13,13 @@
     TASKKILL /F /IM explorer.exe ; explorer.exe
     ```
 
+### Startup Programs
+
+1. Remove autostart programs:
+    ```ps1
+    REG DELETE HKCU\Software\Microsoft\Windows\CurrentVersion\Run /F /VA
+    ```
+
 ## System Apps
 
 ### Explorer.exe
@@ -28,7 +35,7 @@
 
 ### Regedit.exe
 
-1. Add interesting registries to favorites for quick access:
+1. Add registries to favorites for quick access:
     ```ps1
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites /F /V Run /T REG_SZ /D Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
     ```
