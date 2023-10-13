@@ -39,3 +39,12 @@
     ```ps1
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites /F /V Run /T REG_SZ /D Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
     ```
+
+## 3rd Party Apps
+
+### Scoop
+
+1. Install Scoop package manager:
+    ```ps1
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass ; Invoke-WebRequest -UseBasicParsing get.scoop.sh | Invoke-Expression
+    ```
