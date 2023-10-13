@@ -1,6 +1,6 @@
 # Configuration
 
-*- ?.*
+*- configuration.*
 
 ## System
 
@@ -10,7 +10,7 @@
     ```ps1
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /F /V AppsUseLightTheme /T REG_DWORD /D 0
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /F /V SystemUsesLightTheme /T REG_DWORD /D 0
-    TASKKILL /F /IM explorer.exe ; explorer.exe
+    TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
     ```
 
 ### Startup Programs
@@ -30,7 +30,7 @@
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /F /V HideFileExt /T REG_DWORD /D 0
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /F /V ShowSuperHidden /T REG_DWORD /D 1
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /F /V UseCompactMode /T REG_DWORD /D 1
-    TASKKILL /F /IM explorer.exe ; explorer.exe
+    TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
     ```
 
 ### Regedit.exe
@@ -46,5 +46,5 @@
 
 1. Install Scoop package manager:
     ```ps1
-    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass ; Invoke-WebRequest -UseBasicParsing get.scoop.sh | Invoke-Expression
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force ; Invoke-WebRequest -UseBasicParsing get.scoop.sh | Invoke-Expression
     ```
