@@ -6,23 +6,13 @@
 
 ### Personalize
 
-1. Use dark theme:
-    ```ps1
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes /F /V CurrentTheme /T REG_SZ /D "$env:SystemRoot\resources\Themes\aero.theme"
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes /F /V LastHighContrastTheme /T REG_EXPAND_SZ /D '%SystemRoot%\resources\Ease of Access Themes\hcblack.theme'
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes /F /V ThemeMRU /T REG_SZ /D "$env:SystemRoot\resources\Themes\dark.theme;"
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\HighContrast /F /V 'Pre-High Contrast Scheme' /T REG_SZ /D "$env:SystemRoot\resources\Themes\aero.theme"
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /F /V AppsUseLightTheme /T REG_DWORD /D 0
-    REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /F /V SystemUsesLightTheme /T REG_DWORD /D 0
-    TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
-    ```
-2. Clear desktop:
+1. Clear desktop:
     ```ps1
     Remove-Item -Recurse -Force -Path $env:USERPROFILE\Desktop\*
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /F /V '{645FF040-5081-101B-9F08-00AA002F954E}' /T REG_DWORD /D 1
     TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
     ```
-3. Clear taskbar:
+2. Clear taskbar:
     ```ps1
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /F /V TaskbarAl /T REG_DWORD /D 0
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /F /V TaskbarDa /T REG_DWORD /D 0
@@ -31,6 +21,10 @@
     REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Search /F /V SearchboxTaskbarMode /T REG_DWORD /D 0
     REG DELETE HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband /F /VA
     TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
+    ```
+3. Use dark theme:
+    ```ps1
+    Start-Process -FilePath "$env:SystemRoot\Resources\Themes\themeA.theme" ; TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
     ```
 
 ### Debloat
