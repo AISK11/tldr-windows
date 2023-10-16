@@ -24,7 +24,7 @@
     ```
 3. Use dark theme:
     ```ps1
-    Start-Process -FilePath "$env:SystemRoot\Resources\Themes\themeA.theme" ; TASKKILL /F /IM explorer.exe /FI "USERNAME eq $(WHOAMI)" ; explorer.exe
+    TASKKILL /F /IM SystemSettings.exe /FI "USERNAME eq $(WHOAMI)" ; Start-Process -FilePath $env:SystemRoot\Resources\Themes\themeA.theme ; do { TASKLIST /FO CSV /NH /FI 'IMAGENAME eq SystemSettings.exe' /FI "USERNAME eq $(WHOAMI)" | FINDSTR /IM SystemSettings.exe } while ($? -eq $False) ; TASKKILL /F /IM SystemSettings.exe /FI "USERNAME eq $(WHOAMI)"
     ```
 
 ### Debloat
